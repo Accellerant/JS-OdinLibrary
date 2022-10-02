@@ -77,6 +77,7 @@ function bookForm(){
     const form = createForm(body);
 
     pageDimmer.addEventListener('click', removeDimmer);
+    pageDimmer.addEventListener('click', removeForm);
 
 
 }
@@ -113,6 +114,8 @@ function removeDimmer(){
 Prune the form when called upon.
 */
 function removeForm(){
+    const form = document.querySelector('.bookEntry');
+    form.remove();
 
 }
 

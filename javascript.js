@@ -58,13 +58,40 @@ function addBook(book) {
     container.appendChild(entry);
 }
 
-// Test to make sure we setup the event Listener properly.
-function message(){
-    alert("EEP!");
+/*
+Create a form above the entire page which will take 
+in the users input for a new book. The form will have
+a supporting div behind it to dim the entire page so
+that it can pop out more. 
+
+One will be able to remove the form via three ways:
+    * Clicking outside on the "dimmed" page
+    * Clicking an X in the upper right corner
+    * Submitting a valid form
+*/
+function bookForm(){
+    const body = document.querySelector('body');
+    const pageDimmer = document.createElement('div');
+    
+    // The form itself: will be added next.
+    //const form = document.createElement('div');
+    //form.classList.add('bookEntry');
+
+    pageDimmer.classList.add('pageDimmer');
+    body.appendChild(pageDimmer);
+    pageDimmer.addEventListener('click', removeDimmer, true);
+}
+
+/*
+Prune the pageDimmer div from the page.
+*/
+function removeDimmer() {
+    const dimmer = document.querySelector('.pageDimmer');
+    dimmer.remove();
 }
 
 const btnNewBook = document.querySelector('.btnAddBook');
-btnNewBook.addEventListener('click', message);
+btnNewBook.addEventListener('click', bookForm);
 
 addBook(book01);
 addBook(book02);

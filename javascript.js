@@ -35,7 +35,7 @@ their own Div, and then have the pair of Divs placed into another
 container. 
 */
 function addBook(book) {
-    const body = document.querySelector('.containerBooks');
+    const container = document.querySelector('.containerBooks');
     const entry = document.createElement('div');
     entry.classList.add('dummyBook');
 
@@ -55,8 +55,16 @@ function addBook(book) {
 
         entry.appendChild(entryDiv);
     }
-    body.appendChild(entry);
+    container.appendChild(entry);
 }
+
+// Test to make sure we setup the event Listener properly.
+function message(){
+    alert("EEP!");
+}
+
+const btnNewBook = document.querySelector('.btnAddBook');
+btnNewBook.addEventListener('click', message);
 
 addBook(book01);
 addBook(book02);

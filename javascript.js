@@ -87,18 +87,15 @@ Create the form for the user to fill out for a new
 book entry.
 */
 function createForm(body){
-    const form = document.createElement('div');
-    form.classList.add('bookEntry');
-
     const formManifest = document.createElement('fieldset');
+    formManifest.classList.add('bookEntry');
     formManifest.appendChild(createEntryField("Author", "text"));
     formManifest.appendChild(createEntryField("Title", "text"));
     formManifest.appendChild(createEntryField("Pages", "number"));
     formManifest.appendChild(createEntryField("Read", "checkbox"));
     formManifest.appendChild(createEntryField("Favorite", "checkbox"));
 
-    form.appendChild(formManifest);
-    body.appendChild(form);
+    body.appendChild(formManifest);
 }
 
 /*

@@ -81,15 +81,19 @@ function bookForm(){
 
 }
 
+/*
+Create the form for the user to fill out for a new
+book entry.
+*/
 function createForm(body){
     const form = document.createElement('div');
     form.classList.add('bookEntry');
 }
 
 /*
-Create the dimmer div which resides behind the form
+Create the dimmer div which resides behind the form.
 */
-function createDimmer(body) {
+function createDimmer(body){
     const pageDimmer = document.createElement('div');
     pageDimmer.classList.add('pageDimmer');
     body.appendChild(pageDimmer);
@@ -100,9 +104,16 @@ function createDimmer(body) {
 /*
 Prune the pageDimmer div from the page.
 */
-function removeDimmer() {
+function removeDimmer(){
     const dimmer = document.querySelector('.pageDimmer');
     dimmer.remove();
+}
+
+/*
+Prune the form when called upon.
+*/
+function removeForm(){
+
 }
 
 const btnNewBook = document.querySelector('.btnAddBook');

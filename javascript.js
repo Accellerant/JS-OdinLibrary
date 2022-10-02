@@ -71,15 +71,30 @@ One will be able to remove the form via three ways:
 */
 function bookForm(){
     const body = document.querySelector('body');
-    const pageDimmer = document.createElement('div');
-    
-    // The form itself: will be added next.
-    //const form = document.createElement('div');
-    //form.classList.add('bookEntry');
 
+
+    const pageDimmer = createDimmer(body);
+    const form = createForm(body);
+
+    pageDimmer.addEventListener('click', removeDimmer);
+
+
+}
+
+function createForm(body){
+    const form = document.createElement('div');
+    form.classList.add('bookEntry');
+}
+
+/*
+Create the dimmer div which resides behind the form
+*/
+function createDimmer(body) {
+    const pageDimmer = document.createElement('div');
     pageDimmer.classList.add('pageDimmer');
     body.appendChild(pageDimmer);
-    pageDimmer.addEventListener('click', removeDimmer, true);
+
+    return pageDimmer;
 }
 
 /*

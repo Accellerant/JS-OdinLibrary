@@ -89,6 +89,40 @@ book entry.
 function createForm(body){
     const form = document.createElement('div');
     form.classList.add('bookEntry');
+
+    const formManifest = document.createElement('fieldset');
+    formManifest.appendChild(createEntryField("Author", "text"));
+    formManifest.appendChild(createEntryField("Title", "text"));
+    formManifest.appendChild(createEntryField("Pages", "number"));
+    formManifest.appendChild(createEntryField("Read", "checkbox"));
+    formManifest.appendChild(createEntryField("Favorite", "checkbox"));
+
+    form.appendChild(formManifest);
+    body.appendChild(form);
+}
+
+/*
+Create each entry for the form based on the labelName
+and type. Based on what type is, the input field
+will be changed to their respective type.
+*/
+function createEntryField(labelName, type){
+    const entryPair = document.createElement('div');
+    entryPair.classList.add('entryPair');
+
+    const label = document.createElement('label');
+    label.setAttribute('for', labelName);
+    label.textContent = labelName;
+
+    const input = document.createElement('input');
+    input.setAttribute('type', type);
+    input.setAttribute('id', labelName);
+
+    entryPair.appendChild(label);
+    entryPair.appendChild(input);
+
+    return entryPair;
+
 }
 
 /*

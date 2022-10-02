@@ -29,15 +29,15 @@ library.push(book01, book02, book03);
 
 
 /*
-Target the card container and create a card to append to the div.
+Target the book container and create a book object to append to the div.
 Loop through the passed object and assign both the key/value to 
 their own Div, and then have the pair of Divs placed into another
 container. 
 */
-function addCard(book) {
-    const body = document.querySelector('.containerCards');
-    const card = document.createElement('div');
-    card.classList.add('dummyCard');
+function addBook(book) {
+    const body = document.querySelector('.containerBooks');
+    const entry = document.createElement('div');
+    entry.classList.add('dummyBook');
 
     for(a in book) {
         let entryDiv = document.createElement('div');
@@ -53,11 +53,11 @@ function addCard(book) {
         entryDiv.appendChild(catagory);
         entryDiv.appendChild(content);
 
-        card.appendChild(entryDiv);
+        entry.appendChild(entryDiv);
     }
-    body.appendChild(card);
+    body.appendChild(entry);
 }
 
-addCard(book01);
-addCard(book02);
-addCard(book03);
+addBook(book01);
+addBook(book02);
+addBook(book03);

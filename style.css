@@ -6,7 +6,13 @@ Date Created: 29/9/2022
 Date Last Updated:
 */
 
-.containerCards {
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.containerBooks {
     display: grid;
     grid-template-columns: 250px 250px;
     width: 80%;
@@ -14,7 +20,7 @@ Date Last Updated:
     gap: 3%;
 }
 
-.dummyCard {
+.dummyBook {
     background-color: #939393;
     border: 0px;
     width: 250px;
@@ -23,4 +29,12 @@ Date Last Updated:
     font-weight: 1000;
     border-radius: 25px;
     padding: 15px;
+}
+
+.containerButton {
+    align-self: center;
+}
+
+.btnAddBook{
+
 }

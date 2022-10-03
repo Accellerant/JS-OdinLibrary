@@ -72,13 +72,10 @@ One will be able to remove the form via three ways:
 function bookForm(){
     const body = document.querySelector('body');
 
-
     const pageDimmer = createDimmer(body);
     const form = createForm(body);
 
-    pageDimmer.addEventListener('click', removeDimmer);
-    pageDimmer.addEventListener('click', removeForm);
-
+    pageDimmer.addEventListener('click', removeFormSet);
 
 }
 
@@ -94,8 +91,17 @@ function createForm(body){
     formManifest.appendChild(createEntryField("Pages", "number"));
     formManifest.appendChild(createEntryField("Read", "checkbox"));
     formManifest.appendChild(createEntryField("Favorite", "checkbox"));
+    formManifest.appendChild(createFormButton("Add New Book"));
 
     body.appendChild(formManifest);
+}
+
+/*
+Removes both the form and its supporting dimmer.
+*/
+function removeFormSet(){
+    removeDimmer();
+    removeForm();
 }
 
 /*
@@ -114,12 +120,28 @@ function createEntryField(labelName, type){
     const input = document.createElement('input');
     input.setAttribute('type', type);
     input.setAttribute('id', labelName);
+    //input.required = true;
 
     entryPair.appendChild(label);
     entryPair.appendChild(input);
 
     return entryPair;
+}
 
+/*
+Creates the button for the form which allows the user to
+submit their entry. Currently, this just closes out the form
+and its dimmer.
+*/
+function createFormButton(label){
+    const button = document.createElement('button');
+    button.setAttribute('type', 'submit');
+    button.classList.add('btnBookEntry');
+    button.textContent = label;
+
+    button.addEventListener('click', removeFormSet);
+
+    return button;
 }
 
 /*

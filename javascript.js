@@ -55,7 +55,21 @@ function addBook(book) {
 
         entry.appendChild(entryDiv);
     }
+
+    entry.appendChild(createBtnDelete());
+
     container.appendChild(entry);
+}
+
+function createBtnDelete(){
+    const button = document.createElement('button');
+    button.classList.add('btnDeleteEntry');
+    button.setAttribute('type', 'button');
+    button.textContent = "Delete";
+
+    button.addEventListener('click', () => { alert("Listener Check");});
+
+    return button;
 }
 
 /*

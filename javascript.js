@@ -98,6 +98,10 @@ function createForm(body){
     formManifest.appendChild(createEntryField("Favorite", "checkbox"));
     formManifest.appendChild(createFormButton("Add New Book"));
 
+    //Disables the form from refreshing the page upon submission.
+    form.addEventListener('submit', (event) => { event.preventDefault();});
+    form.addEventListener('submit', removeFormSet);
+
     form.appendChild(formManifest);
     body.appendChild(form);
 }
@@ -177,7 +181,7 @@ function removeDimmer(){
 Prune the form when called upon.
 */
 function removeForm(){
-    const form = document.querySelector('.bookEntry');
+    const form = document.querySelector('form');
     form.remove();
 
 }

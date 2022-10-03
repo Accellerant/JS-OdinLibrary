@@ -69,7 +69,7 @@ One will be able to remove the form via three ways:
     * Clicking an X in the upper right corner
     * Submitting a valid form
 */
-function bookForm(){
+function bookForm() {
     const body = document.querySelector('body');
 
     const pageDimmer = createDimmer(body);
@@ -83,7 +83,7 @@ function bookForm(){
 Create the form for the user to fill out for a new
 book entry.
 */
-function createForm(body){
+function createForm(body) {
     const form = document.createElement('form');
     form.setAttribute('action', '#');
     form.setAttribute('method', 'get');
@@ -100,6 +100,7 @@ function createForm(body){
 
     //Disables the form from refreshing the page upon submission.
     form.addEventListener('submit', (event) => { event.preventDefault();});
+    form.addEventListener('submit', formToObj);
     form.addEventListener('submit', removeFormSet);
 
     form.appendChild(formManifest);
@@ -107,9 +108,27 @@ function createForm(body){
 }
 
 /*
+Take the form data and convert it to an object
+so it can be utilized by addBook().
+*/
+function formToObj() {
+    const formInputs = document.querySelectorAll('input');
+    const newBookEntry = new Book();
+
+    for(let a = 0; a < formInputs.length; a++){
+        if(formInputs[a].value === "on")
+            newBookEntry[formInputs[a].name] = formInputs[a].checked;
+        else   
+            newBookEntry[formInputs[a].name] = formInputs[a].value;
+    }
+
+    addBook(newBookEntry);
+}
+
+/*
 Removes both the form and its supporting dimmer.
 */
-function removeFormSet(){
+function removeFormSet() {
     removeDimmer();
     removeForm();
 }
@@ -119,7 +138,7 @@ Create each entry for the form based on the labelName
 and type. Based on what type is, the input field
 will be changed to their respective type.
 */
-function createEntryField(labelName, type){
+function createEntryField(labelName, type) {
     let lowCaseLabel = labelName.toLowerCase();
     const entryPair = document.createElement('div');
     entryPair.classList.add('entryPair');
@@ -131,7 +150,7 @@ function createEntryField(labelName, type){
     const input = document.createElement('input');
     input.setAttribute('type', type);
     input.setAttribute('id', lowCaseLabel);
-    input.setAttribute('name', lowCaseLabel)
+    input.setAttribute('name', lowCaseLabel);
 
     if(type !== "checkbox")
         input.setAttribute('required', '');
@@ -147,7 +166,7 @@ Creates the button for the form which allows the user to
 submit their entry. Currently, this just closes out the form
 and its dimmer.
 */
-function createFormButton(label){
+function createFormButton(label) {
     const button = document.createElement('button');
     button.setAttribute('type', 'submit');
     button.classList.add('btnBookEntry');
@@ -161,7 +180,7 @@ function createFormButton(label){
 /*
 Create the dimmer div which resides behind the form.
 */
-function createDimmer(body){
+function createDimmer(body) {
     const pageDimmer = document.createElement('div');
     pageDimmer.classList.add('pageDimmer');
     body.appendChild(pageDimmer);
@@ -172,7 +191,7 @@ function createDimmer(body){
 /*
 Prune the pageDimmer div from the page.
 */
-function removeDimmer(){
+function removeDimmer() {
     const dimmer = document.querySelector('.pageDimmer');
     dimmer.remove();
 }
@@ -180,7 +199,7 @@ function removeDimmer(){
 /*
 Prune the form when called upon.
 */
-function removeForm(){
+function removeForm() {
     const form = document.querySelector('form');
     form.remove();
 

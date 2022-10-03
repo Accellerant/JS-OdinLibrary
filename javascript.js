@@ -17,17 +17,6 @@ function Book(author, title, pages, read, favorite) {
     this.favorite = favorite;
 }
 
-// Contain all the Book objects
-let library = [];
-
-// Test Books: Will remove later!
-const book01 = new Book("R.L. Stine", 'Stay Out of the Basement', 122, true, true);
-const book02 = new Book('Dr. Seuss', 'Oh, the Places You\'ll Go!', 56, false, false);
-const book03 = new Book('Dav Pilkey', 'The Adventures of Captain Underpants', 125, true, false);
-
-library.push(book01, book02, book03);
-
-
 /*
 Target the book container and create a book object to append to the div.
 Loop through the passed object and assign both the key/value to 
@@ -218,6 +207,16 @@ function removeForm() {
     form.remove();
 
 }
+
+// Contain all the Book objects
+let library = [];
+
+// Test Books: Will remove later!
+const book01 = new Book("R.L. Stine", 'Stay Out of the Basement', 122, true, true);
+const book02 = new Book('Dr. Seuss', 'Oh, the Places You\'ll Go!', 56, false, false);
+const book03 = new Book('Dav Pilkey', 'The Adventures of Captain Underpants', 125, true, false);
+
+library.push(book01, book02, book03);
 
 const btnNewBook = document.querySelector('.btnAddBook');
 btnNewBook.addEventListener('click', bookForm);

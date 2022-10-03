@@ -40,10 +40,14 @@ body {
 
 }
 
-.bookEntry {
+
+form {
     position: fixed;
     z-index: 2;
-
+    width: 20em;
+    height: 30em;
+    background-color: white;
+    border-radius: 1em;
 }
 
 .pageDimmer {

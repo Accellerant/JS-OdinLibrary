@@ -84,6 +84,11 @@ Create the form for the user to fill out for a new
 book entry.
 */
 function createForm(body){
+    const form = document.createElement('form');
+    form.setAttribute('action', '#');
+    form.setAttribute('method', 'get');
+
+
     const formManifest = document.createElement('fieldset');
     formManifest.classList.add('bookEntry');
     formManifest.appendChild(createEntryField("Author", "text"));
@@ -93,7 +98,8 @@ function createForm(body){
     formManifest.appendChild(createEntryField("Favorite", "checkbox"));
     formManifest.appendChild(createFormButton("Add New Book"));
 
-    body.appendChild(formManifest);
+    form.appendChild(formManifest);
+    body.appendChild(form);
 }
 
 /*
@@ -110,17 +116,21 @@ and type. Based on what type is, the input field
 will be changed to their respective type.
 */
 function createEntryField(labelName, type){
+    let lowCaseLabel = labelName.toLowerCase();
     const entryPair = document.createElement('div');
     entryPair.classList.add('entryPair');
 
     const label = document.createElement('label');
-    label.setAttribute('for', labelName);
+    label.setAttribute('for', lowCaseLabel);
     label.textContent = labelName;
 
     const input = document.createElement('input');
     input.setAttribute('type', type);
-    input.setAttribute('id', labelName);
-    input.setAttribute('required', '');
+    input.setAttribute('id', lowCaseLabel);
+    input.setAttribute('name', lowCaseLabel)
+
+    if(type !== "checkbox")
+        input.setAttribute('required', '');
 
     entryPair.appendChild(label);
     entryPair.appendChild(input);
@@ -139,7 +149,7 @@ function createFormButton(label){
     button.classList.add('btnBookEntry');
     button.textContent = label;
 
-    button.addEventListener('click', removeFormSet);
+    //button.addEventListener('click', removeFormSet);
 
     return button;
 }

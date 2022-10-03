@@ -120,7 +120,7 @@ function createEntryField(labelName, type){
     const input = document.createElement('input');
     input.setAttribute('type', type);
     input.setAttribute('id', labelName);
-    //input.required = true;
+    input.setAttribute('required', '');
 
     entryPair.appendChild(label);
     entryPair.appendChild(input);

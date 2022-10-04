@@ -61,10 +61,31 @@ function displayBook(book) {
     containerLibrary.appendChild(bookEntry);
 }
 
+/*
+Loop through the library array and plug in each
+object into the displayBook function.
+*/
 function displayLibrary(singleEntry) {
+
+    checkForEntries();
+
     //a will come up as digits
     for(a in library) {
         displayBook(library[a]);
+    }
+}
+
+/*
+If any book entries are already on the page, remove them so
+that the list isn't duped with the same previous entries.
+*/
+function checkForEntries(){
+    const checkForEntries = document.querySelectorAll('.bookEntry');
+
+    if(checkForEntries.length !== 0){
+        for(let a = 0; a < checkForEntries.length; a++)
+            checkForEntries[a].remove();
+            
     }
 }
 

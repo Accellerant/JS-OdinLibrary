@@ -9,12 +9,13 @@ Date Last Updated:
 /*
 Constructor to store our book information
 */
-function Book(author, title, pages, read, favorite) {
+function Book(author, title, pages, read, favorite, position) {
     this.author = author;
     this.title = title;
     this.pages = pages;
     this.read = read;
     this.favorite = favorite;
+    this.position = position;
 }
 
 /*
@@ -69,7 +70,7 @@ function displayLibrary(singleEntry) {
 If any book entries are already on the page, remove them so
 that the list isn't duped with the same previous entries.
 */
-function checkForEntries(){
+function checkForEntries() {
     const checkForEntries = document.querySelectorAll('.bookEntry');
 
     if(checkForEntries.length !== 0){
@@ -79,19 +80,23 @@ function checkForEntries(){
     }
 }
 
-function addBookToLibrary(book){
+function addBookToLibrary(book) {
     library.push(book);
 }
 
-function createBtnDelete(){
+function createBtnDelete() {
     const button = document.createElement('button');
     button.classList.add('btnDeleteEntry');
     button.setAttribute('type', 'button');
     button.textContent = "Delete";
 
-    button.addEventListener('click', () => { alert("Listener Check");});
+    button.addEventListener('click', deleteBook);
 
     return button;
+}
+
+function deleteBook() {
+
 }
 
 /*
@@ -245,9 +250,9 @@ function removeForm() {
 let library = [];
 
 // Test Books: Will remove later!
-const book01 = new Book("R.L. Stine", 'Stay Out of the Basement', 122, true, true);
-const book02 = new Book('Dr. Seuss', 'Oh, the Places You\'ll Go!', 56, false, false);
-const book03 = new Book('Dav Pilkey', 'The Adventures of Captain Underpants', 125, true, false);
+const book01 = new Book("R.L. Stine", 'Stay Out of the Basement', 122, true, true, 0);
+const book02 = new Book('Dr. Seuss', 'Oh, the Places You\'ll Go!', 56, false, false, 1);
+const book03 = new Book('Dav Pilkey', 'The Adventures of Captain Underpants', 125, true, false, 2);
 
 library.push(book01, book02, book03);
 

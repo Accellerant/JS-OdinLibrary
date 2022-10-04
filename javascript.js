@@ -34,28 +34,42 @@ Loop through the passed object and assign both the key/value to
 their own Div, and then have the pair of Divs placed into another
 container. 
 */
-function addBook(book) {
-    const container = document.querySelector('.containerBooks');
-    const entry = document.createElement('div');
-    entry.classList.add('dummyBook');
+function displayBook(book) {
+    const containerLibrary = document.querySelector('.containerLibrary');
+    const bookEntry = document.createElement('div');
+    bookEntry.classList.add('bookEntry');
 
     for(a in book) {
-        let entryDiv = document.createElement('div');
-        let catagory = document.createElement('div');
-        let content = document.createElement('div');
-        entryDiv.classList.add('entry');
+        // container for catagory and content
+        const containerField = document.createElement('div');
+        const catagory = document.createElement('div');
+        const content = document.createElement('div');
+
+        containerField.classList.add('containerField');
         catagory.classList.add('catagory');
         content.classList.add('content');
 
-
+        //key
         catagory.textContent = a;
+        //value
         content.textContent = book[a];
-        entryDiv.appendChild(catagory);
-        entryDiv.appendChild(content);
+        containerField.appendChild(catagory);
+        containerField.appendChild(content);
 
-        entry.appendChild(entryDiv);
+        bookEntry.appendChild(containerField);
     }
-    container.appendChild(entry);
+    containerLibrary.appendChild(bookEntry);
+}
+
+function displayLibrary(singleEntry) {
+    //a will come up as digits
+    for(a in library) {
+        displayBook(library[a]);
+    }
+}
+
+function addBookToLibrary(book){
+    library.push(book);
 }
 
 /*
@@ -90,7 +104,6 @@ function createForm(body) {
 
 
     const formManifest = document.createElement('fieldset');
-    formManifest.classList.add('bookEntry');
     formManifest.appendChild(createEntryField("Author", "text"));
     formManifest.appendChild(createEntryField("Title", "text"));
     formManifest.appendChild(createEntryField("Pages", "number"));
@@ -109,7 +122,7 @@ function createForm(body) {
 
 /*
 Take the form data and convert it to an object
-so it can be utilized by addBook().
+so it can be utilized by displayLibrary().
 */
 function formToObj() {
     const formInputs = document.querySelectorAll('input');
@@ -122,7 +135,8 @@ function formToObj() {
             newBookEntry[formInputs[a].name] = formInputs[a].value;
     }
 
-    addBook(newBookEntry);
+    addBookToLibrary(newBookEntry);
+    displayLibrary(newBookEntry);
 }
 
 /*
@@ -208,6 +222,4 @@ function removeForm() {
 const btnNewBook = document.querySelector('.btnAddBook');
 btnNewBook.addEventListener('click', bookForm);
 
-addBook(book01);
-addBook(book02);
-addBook(book03);
+displayLibrary();

@@ -91,7 +91,12 @@ function checkForEntries() {
     }
 }
 
+/*
+Update a book's position to the currrenth library
+length. Then add it to the library.
+*/
 function addBookToLibrary(book) {
+    book["position"] = library.length;
     library.push(book);
 }
 
@@ -185,6 +190,7 @@ function formToObj() {
     const newBookEntry = new Book();
 
     for(let a = 0; a < formInputs.length; a++){
+        // If it's a checkmark, assign the checked value
         if(formInputs[a].value === "on")
             newBookEntry[formInputs[a].name] = formInputs[a].checked;
         else   

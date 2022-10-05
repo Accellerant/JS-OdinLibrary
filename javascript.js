@@ -41,17 +41,12 @@ function displayBook(book) {
         // container for catagory and content
         const containerField = document.createElement('div');
         const catagory = document.createElement('div');
-        const content = document.createElement('div');
+        const content = createContent(book[a]);
 
         containerField.classList.add('containerField');
         catagory.classList.add('catagory');
-        content.classList.add('content');
 
-        //key
         catagory.textContent = a;
-        //value
-        content.textContent = book[a];
-            
 
         containerField.appendChild(catagory);
         containerField.appendChild(content);
@@ -61,6 +56,18 @@ function displayBook(book) {
     
     bookEntry.appendChild(createBtnDelete(bookPos));
     containerLibrary.appendChild(bookEntry);
+}
+
+/*
+Take the value from the Book object 
+and create a div element to contain it.
+*/
+function createContent(val) {
+    const divContent = document.createElement('div');
+    divContent.classList.add('content');
+    divContent.textContent = val;
+
+    return divContent;
 }
 
 /*

@@ -72,11 +72,29 @@ Take the value from the Book object
 and create a div element to contain it.
 */
 function createContent(val) {
+    if(typeof(val) === "boolean") {
+        return createCheckbox(val);
+    } 
+
     const divContent = document.createElement('div');
     divContent.classList.add('content');
     divContent.textContent = val;
 
     return divContent;
+}
+
+/*
+Create a checkbox and determine if it's checked
+via the passed bool value.
+*/
+function createCheckbox(val) {
+    const checkBox = document.createElement('input');
+    checkBox.setAttribute('type', 'checkbox');
+    checkBox.classList.add('content');
+
+    checkBox.checked = val;
+
+    return checkBox;
 }
 
 /*

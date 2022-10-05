@@ -40,13 +40,10 @@ function displayBook(book) {
 
         // container for catagory and content
         const containerField = document.createElement('div');
-        const catagory = document.createElement('div');
+        const catagory = createCatagory(a);
         const content = createContent(book[a]);
 
         containerField.classList.add('containerField');
-        catagory.classList.add('catagory');
-
-        catagory.textContent = a;
 
         containerField.appendChild(catagory);
         containerField.appendChild(content);
@@ -68,6 +65,18 @@ function createContent(val) {
     divContent.textContent = val;
 
     return divContent;
+}
+
+/*
+Place the key value from the Book object
+within a div element.
+*/
+function createCatagory(key) {
+    const divCatagory = document.createElement('div');
+    divCatagory.classList.add('catagory');
+    divCatagory.textContent = key;
+
+    return divCatagory;
 }
 
 /*

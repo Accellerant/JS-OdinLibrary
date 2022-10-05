@@ -28,8 +28,16 @@ function displayBook(book) {
     const containerLibrary = document.querySelector('.containerLibrary');
     const bookEntry = document.createElement('div');
     bookEntry.classList.add('bookEntry');
+    let bookPos = -1;
 
     for(a in book) {
+        // Skip the loop so that position isn't displayed.
+        if(a === "position") {
+            // To be utilized by deleteBook()
+            bookPos = book[a];
+            continue;
+        }
+
         // container for catagory and content
         const containerField = document.createElement('div');
         const catagory = document.createElement('div');
@@ -43,12 +51,15 @@ function displayBook(book) {
         catagory.textContent = a;
         //value
         content.textContent = book[a];
+            
+
         containerField.appendChild(catagory);
         containerField.appendChild(content);
 
         bookEntry.appendChild(containerField);
     }
-    bookEntry.appendChild(createBtnDelete());
+    
+    bookEntry.appendChild(createBtnDelete(bookPos));
     containerLibrary.appendChild(bookEntry);
 }
 
@@ -84,10 +95,16 @@ function addBookToLibrary(book) {
     library.push(book);
 }
 
-function createBtnDelete() {
+/*
+Create a button for each book entry.
+*/
+function createBtnDelete(bookPos) {
     const button = document.createElement('button');
     button.classList.add('btnDeleteEntry');
     button.setAttribute('type', 'button');
+
+    //To be utilized by deleteBook()
+    button.setAttribute('id', bookPos);
     button.textContent = "Delete";
 
     button.addEventListener('click', deleteBook);
@@ -95,8 +112,20 @@ function createBtnDelete() {
     return button;
 }
 
+/*
+Remove the book entry via the position
+assigned to the button id. Repopulate
+the page with what remains in the array.
+*/
 function deleteBook() {
+    library.splice(parseInt(this.id), 1);
 
+    for(let a = 0; a < library.length; a++) {
+        // Update the position for each 
+        library[a]["position"] = a;
+    }
+
+    displayLibrary(library);
 }
 
 /*

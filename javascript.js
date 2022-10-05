@@ -30,6 +30,20 @@ function displayBook(book) {
     bookEntry.classList.add('bookEntry');
     let bookPos = -1;
 
+    bookPos = extractBookEntries(bookEntry, book);
+    
+    bookEntry.appendChild(createBtnDelete(bookPos));
+    containerLibrary.appendChild(bookEntry);
+}
+
+/*
+Take the key/value pairs within the Book object
+and place them into HTML elements. When the position
+key is encountered, assign it to bookPos and return
+the value at the end.
+*/
+function extractBookEntries(bookEntry, book) {
+    let bookPos = -1;
     for(a in book) {
         // Skip the loop so that position isn't displayed.
         if(a === "position") {
@@ -44,15 +58,13 @@ function displayBook(book) {
         const content = createContent(book[a]);
 
         containerField.classList.add('containerField');
-
         containerField.appendChild(catagory);
         containerField.appendChild(content);
 
         bookEntry.appendChild(containerField);
     }
-    
-    bookEntry.appendChild(createBtnDelete(bookPos));
-    containerLibrary.appendChild(bookEntry);
+
+    return bookPos;
 }
 
 /*

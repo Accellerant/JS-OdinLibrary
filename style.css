@@ -26,12 +26,11 @@ body {
 .bookEntry {
     background-color: #939393;
     border: 0px;
-    width: 250px;
-    height: 300px;
     color: white;
     font-weight: 1000;
     border-radius: 25px;
-    padding: 15px;
+    padding: 1em;
+    margin: 1em;
 }
 
 .containerButton {

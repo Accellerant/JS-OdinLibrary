@@ -91,10 +91,33 @@ function createCheckbox(val) {
     const checkBox = document.createElement('input');
     checkBox.setAttribute('type', 'checkbox');
     checkBox.classList.add('content');
+    checkBox.addEventListener('click', checkboxToggle);
 
     checkBox.checked = val;
 
     return checkBox;
+}
+
+
+/*
+For the currently clicked checkbox on the page, 
+toggle the bool value of the associated object 
+within the library array.
+*/
+function checkboxToggle(){
+    // previous sibling's always the key
+    let key = this.previousSibling.textContent
+    let value = this.checked;
+    // Need to go up one, then to the next sibling.
+    let findButton = this.parentElement.nextElementSibling;
+    let posEdit = -1;
+
+    // loop until the button is encountered
+    while(findButton.tagName.toLowerCase() != "button")
+        findButton = findButton.nextElementSibling;
+
+    posEdit = findButton.id;
+    library[parseInt(posEdit)][key] = value;
 }
 
 /*

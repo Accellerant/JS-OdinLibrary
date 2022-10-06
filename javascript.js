@@ -232,14 +232,14 @@ Take the form data and convert it to an object
 so it can be utilized by displayLibrary().
 */
 function formToObj() {
-    const formInputs = document.querySelectorAll('input');
+    const formInputs = this.querySelectorAll('input');
     const newBookEntry = new Book();
 
     for(let a = 0; a < formInputs.length; a++){
         // If it's a checkmark, assign the checked value
-        if(formInputs[a].value === "on")
+        if(formInputs[a].value === "on") 
             newBookEntry[formInputs[a].name] = formInputs[a].checked;
-        else   
+        else
             newBookEntry[formInputs[a].name] = formInputs[a].value;
     }
 

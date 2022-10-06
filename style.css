@@ -17,10 +17,10 @@ body {
 .containerLibrary {
     display: grid;
     grid-template-columns: 20em 20em 20em;
-    width: 80%;
-    height: 80%;
     gap: 3%;
     justify-content: center;
+    padding: 1.5em;
+    margin: 1.5em;
 }
 
 .bookEntry {

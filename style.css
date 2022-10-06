@@ -12,6 +12,11 @@ body {
     gap: 2em;
     margin: 0;
     align-items: center;
+    /* 
+    Photo by Janko Ferlic from Pexels: 
+    https://www.pexels.com/photo/light-inside-library-590493/ 
+    */
+    background-image: url('./images/pexels-janko-ferlic-590493_Edit.jpg');
 }
 
 .containerLibrary {

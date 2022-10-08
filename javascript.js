@@ -44,6 +44,8 @@ the value at the end.
 */
 function extractBookEntries(bookEntry, book) {
     let bookPos = -1;
+    const checkBoxesContainer = document.createElement('div');
+    checkBoxesContainer.classList.add('checkBoxesContainer');
     for(a in book) {
         // Skip the loop so that position isn't displayed.
         if(a === "position") {
@@ -60,6 +62,17 @@ function extractBookEntries(bookEntry, book) {
         containerField.classList.add('containerField');
         containerField.appendChild(catagory);
         containerField.appendChild(content);
+
+        if(typeof(book[a]) === "boolean") {
+            console.log(book[a]);
+            checkBoxesContainer.appendChild(containerField);
+
+            if(checkBoxesContainer.childElementCount == 2) {
+                bookEntry.appendChild(checkBoxesContainer);
+            }
+
+            continue;
+        }
 
         bookEntry.appendChild(containerField);
     }
@@ -241,8 +254,15 @@ function createForm(body) {
     formManifest.appendChild(createEntryField("Author", "text"));
     formManifest.appendChild(createEntryField("Title", "text"));
     formManifest.appendChild(createEntryField("Pages", "number"));
-    formManifest.appendChild(createEntryField("Read", "checkbox"));
-    formManifest.appendChild(createEntryField("Favorite", "checkbox"));
+
+    const checkBoxesContainer = document.createElement('div');
+    checkBoxesContainer.classList.add('checkBoxesContainer');
+    checkBoxesContainer.appendChild(createEntryField("Read", "checkbox"));
+    checkBoxesContainer.appendChild(createEntryField("Favorite", "checkbox"));
+    formManifest.appendChild(checkBoxesContainer);
+
+    //formManifest.appendChild(createEntryField("Read", "checkbox"));
+    //formManifest.appendChild(createEntryField("Favorite", "checkbox"));
     formManifest.appendChild(createFormButton("Add New Book"));
 
     //Disables the form from refreshing the page upon submission.

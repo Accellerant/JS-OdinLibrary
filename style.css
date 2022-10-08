@@ -16,7 +16,10 @@ body {
     Photo by Janko Ferlic from Pexels: 
     https://www.pexels.com/photo/light-inside-library-590493/ 
     */
-    background-image: url('./images/pexels-janko-ferlic-590493_Edit.jpg');
+    background: linear-gradient(0.25turn, rgba(85, 85, 85, 0.3), 
+                                        rgba(11, 11, 11, 0.52), 
+                                        rgba(85, 85, 85, 0.3)), 
+                url('./images/pexels-janko-ferlic-590493_Edit.jpg');
     min-height: 100vh;
 }
 
@@ -40,6 +43,7 @@ body {
     margin: 1em;
     display: flex;
     flex-direction: column;
+    box-shadow: 15px 15px 15px black;
 }
 
 .containerButton {

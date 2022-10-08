@@ -229,11 +229,15 @@ book entry.
 */
 function createForm(body) {
     const form = document.createElement('form');
+    const formLegend = document.createElement('legend');
     form.setAttribute('action', '#');
     form.setAttribute('method', 'get');
+    formLegend.textContent = `Please enter the following 
+                            information for your Book Entry`;
 
 
     const formManifest = document.createElement('fieldset');
+    formManifest.appendChild(formLegend);
     formManifest.appendChild(createEntryField("Author", "text"));
     formManifest.appendChild(createEntryField("Title", "text"));
     formManifest.appendChild(createEntryField("Pages", "number"));

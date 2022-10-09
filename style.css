@@ -46,6 +46,7 @@ body {
     flex-direction: column;
     box-shadow: 15px 15px 15px black;
     gap: 1rem;
+    justify-content: space-evenly;
 }
 
 .containerButton {

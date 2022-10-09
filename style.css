@@ -31,6 +31,7 @@ body {
     padding: 1.5em;
     margin: 1.5em;
     min-width: 80vw;
+    font-size: clamp(.55rem, 3vw, 1rem);
 }
 
 .bookEntry {
@@ -44,6 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     box-shadow: 15px 15px 15px black;
+    gap: 1rem;
 }
 
 .containerButton {
@@ -78,4 +80,31 @@ form {
     background-color:rgba(57, 57, 57, 0.68);
     width: 100%;
     height: 100%;
+}
+
+.catagory {
+    font-size: clamp(1rem, 5vw, 1.3rem);
+    font-style: italic;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+
+.containerField {
+    gap: .5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkBoxesContainer > .containerField {
+    align-items: center;
+}
+
+.checkBoxesContainer > .containerField > input {
+    width: 2rem;
+    height: 2rem;
+}
+
+.checkBoxesContainer {
+    display: flex;
+    justify-content: space-evenly;
 }

@@ -377,14 +377,5 @@ function removeForm() {
 // Contain all the Book objects
 let library = [];
 
-// Test Books: Will remove later!
-const book01 = new Book("R.L. Stine", 'Stay Out of the Basement', 122, true, true, 0);
-const book02 = new Book('Dr. Seuss', 'Oh, the Places You\'ll Go!', 56, false, false, 1);
-const book03 = new Book('Dav Pilkey', 'The Adventures of Captain Underpants', 125, true, false, 2);
-
-library.push(book01, book02, book03);
-
 const btnNewBook = document.querySelector('.btnAddBook');
 btnNewBook.addEventListener('click', bookForm);
-
-displayLibrary();

@@ -73,10 +73,12 @@ body {
 form {
     position: fixed;
     z-index: 2;
-    width: 20em;
-    height: 30em;
     background-color: white;
     border-radius: 1em;
+    display: flex;
+    padding: clamp(0.5rem, 50vw, 2rem);
+    width: clamp(3rem, 70vw, 25rem);
+    height: clamp(5rem, 80vh, 30rem);
 }
 
 .pageDimmer {
@@ -109,7 +111,33 @@ form {
     height: 2rem;
 }
 
+#read, #favorite {
+    height: 5vh;
+}
+
 .checkBoxesContainer {
     display: flex;
     justify-content: space-evenly;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    border-style: none;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+.entryPair {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*
+Hide the scroll tics for the number input field.
+*/
+input[type=number] {
+    -moz-appearance: textfield;
 }

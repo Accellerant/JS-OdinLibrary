@@ -25,13 +25,15 @@ body {
 
 .containerLibrary {
     display: grid;
-    grid-template-columns: 20em 20em 20em;
+    grid-template-columns: repeat(5, 20rem);
     gap: 3%;
     justify-content: center;
     padding: 1.5em;
     margin: 1.5em;
-    min-width: 80vw;
     font-size: clamp(.55rem, 3vw, 1rem);
+    height: 75vh;
+    width: 95vw;
+    overflow: scroll;
 }
 
 .bookEntry {
@@ -47,6 +49,8 @@ body {
     box-shadow: 15px 15px 15px black;
     gap: 1rem;
     justify-content: space-evenly;
+    height: clamp(5rem, 75vh, 20rem);
+    width: clamp(8rem, 60vw, 18rem);
 }
 
 .containerButton {
